@@ -3,6 +3,7 @@ Project details:
 
 *Done using localhost(xampp).
 *Import the tbl_users(1).sql if needed.
+*Details of database is in db_config.php
 
  Signup page:
  *Validation for all fields.
