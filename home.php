@@ -63,6 +63,7 @@ if($row['type'] == 'Student'){
             var activeInfoWindow;
             var infoWindow;
             var obj;
+            
             //var locations;
 
 
@@ -72,6 +73,7 @@ if($row['type'] == 'Student'){
 
 
             function initMap() {
+                
                 map = new google.maps.Map(document.getElementById('map'), {
                     center: {
                         lat: 21.146633,
@@ -105,7 +107,7 @@ if($row['type'] == 'Student'){
                         infoWindow.setPosition(pos);
                         map.setCenter(pos);
 
-
+                        
                         //set markers for teachers or students
 
                         var markers = locations.map(function(location, i) {
@@ -146,8 +148,10 @@ if($row['type'] == 'Student'){
                     // Browser doesn't support Geolocation
                     handleLocationError(false, infoWindow, map.getCenter());
                 }
-
+               
             }
+            
+
 
 
 
@@ -209,6 +213,8 @@ if($row['type'] == 'Student'){
 
             }
             
+            
+            
             var locations = [{
                 lat: 13.0677,
                 lng: 77.5043
@@ -217,11 +223,11 @@ if($row['type'] == 'Student'){
                 lng: 77.6271
             }, {
                 lat: 12.9461,
-                lng: 77.6192° 
+                lng: 77.6192 
             }, {
                 lat: 12.9315,
                 lng: 77.6300
-            }];
+            }]
 
 
 
@@ -233,9 +239,10 @@ if($row['type'] == 'Student'){
                     'Error: Your browser doesn\'t support geolocation.');
                 infoWindow.open(map);
             }
-        </script>
+            </script>
         <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6RdXuzC5kbJj1HOT-abvrJ1ZEW3GBzAY&callback=initMap"></script>
+        
     </head>
 
     <body>
@@ -244,7 +251,7 @@ if($row['type'] == 'Student'){
         
         <ul class="nav nav-pills justify-content-center">
             <li class="nav-item">
-            <a href="#" role="button" class="nav-link"> <?php echo $row['fullName']; ?></a>
+            <a class="nav-link"> <?php echo $row['fullName']; ?></a>
         </li>
                 <li class="nav-item">
                 <a class="nav-link">(<?php echo $row['type'];?>)</a>
@@ -261,7 +268,6 @@ if($row['type'] == 'Student'){
        
 
 
-
         <?php
     $stmt = $user_home->runQuery("SELECT * FROM tbl_users WHERE type = :stype");
     $stmt->bindParam(":stype", $stype);
@@ -270,7 +276,7 @@ if($row['type'] == 'Student'){
     $result = array();
         ?>
 
-            <table border="1" style="float: right;margin-right: 25px;">
+            <table border="1" style="float: right;margin-left: 50px;">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -289,8 +295,10 @@ if($row['type'] == 'Student'){
                     if($distance <= 1){
                         array_push($result,array('lat' => $rr['lat'], 'lng' => $rr['lng']));
                         //$array = array($rr['lat'], $rr['lng']);
-                        echo "<tr><td>{$rr['fullName']}</td><td>{$rr['userEmail']}</td><td>{$rr['num']}</td><td></tr>";
-                    }
+                        echo "<tr><td>{$rr['fullName']}</td><td>{$rr['userEmail']}</td><td>{$rr['num']}</td></tr>";
+                    } //else {
+                        //echo '<tr><td colspan="4">No Result found!</td></tr>';
+                    //}
             }
         }
 
@@ -307,14 +315,15 @@ if($row['type'] == 'Student'){
                 
                     <!-- section 1 -->
 
-                <!-- <script type="text/javascript">
-         var locations = new Object();
+
+
+            <!-- <div id="map"></div>
+            <script type="text/javascript">
          var locations = ('<?= $json; ?>');
-         console.log(locations[0]);
+         locations = JSON.parse(locations);
+         console.log(locations);
          </script> -->
-
-
-            <div id="map"></div>
+        
            
 
     </body>

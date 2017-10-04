@@ -25,7 +25,7 @@ if(isset($_POST['btn-login']))
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Login | Scryptonite</title>
+    <title>Login </title>
     <!-- Bootstrap -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
